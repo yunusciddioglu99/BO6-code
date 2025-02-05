@@ -1,0 +1,14 @@
+const int speakerPin = 25; // Change to the GPIO pin connected to your speaker
+
+void setup() {
+  // Configure PWM channel 0, frequency 2 kHz, and resolution 8 bits
+  ledcSetup(0, 2000, 8); 
+  ledcAttachPin(speakerPin, 0); // Attach speakerPin to channel 0
+}
+
+void loop() {
+  ledcWriteTone(0, 1000); // Play a 1 kHz tone
+  delay(500);             // Hold the tone for 500 ms
+  ledcWriteTone(0, 0);    // Stop the tone
+  delay(500);             // Pause for 500 ms
+}
